@@ -91,10 +91,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_plaid_grid(
-    KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,       KC_Y,       KC_U,    TR_IDOT,    KC_O,    KC_P,    KC_BSPC,
-    KC_ESC,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,       KC_H,       KC_J,    KC_K,    KC_L,    TR_SCLN, TR_QUOT,
-    LSFT_CAPS, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,       KC_M,    TR_COMM, TR_DOT,  TR_SLSH, KC_ENT ,
-    KC_LCTL,   KC_RALT, KC_LALT, KC_LGUI, LOWER,   SPACE_SPC,  SPACE_SPC,  RAISE,   KC_LEFT, KC_UP,   KC_DOWN,   KC_RGHT
+    KC_TAB,      KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,       KC_Y,       KC_U,    TR_IDOT,    KC_O,    KC_P,    KC_BSPC,
+    KC_ESC,      KC_A,    KC_S,    KC_D,    KC_F,    KC_G,       KC_H,       KC_J,    KC_K,    KC_L,    TR_SCLN, TR_QUOT,
+    KC_LCTL,     KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,       KC_M,    TR_COMM, TR_DOT,  TR_SLSH, KC_ENT ,
+    LSFT_CAPS,   KC_RALT, KC_LALT, KC_LGUI, LOWER,   SPACE_SPC,  SPACE_SPC,  RAISE,   KC_LEFT, KC_UP,   KC_DOWN,   KC_RGHT
 ),
 
 /* Colemak
@@ -109,10 +109,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_COLEMAK] = LAYOUT_plaid_grid(
-    KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
-    KC_ESC,  KC_A,    KC_R,    KC_S,    KC_T,    KC_D,    KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    KC_QUOT,
-    KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT ,
-    KC_LCTL, KC_RALT, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_UP,   KC_DOWN,   KC_RGHT
+    KC_TAB,     KC_Q,          KC_W,          KC_F,            KC_P,    KC_G,       KC_J,       KC_L,    KC_U,             KC_Y,             KC_SCLN,   KC_BSPC,
+    KC_ESC,     KC_A,          KC_R,          KC_S,            KC_T,    KC_D,       KC_H,       KC_N,    KC_E,             KC_I,             KC_O,      KC_QUOT,
+    KC_LCTL,    LALT_T(TR_Z),  LCTL_T(TR_X),  LSFT_T(TR_C),    KC_V,    KC_B,       KC_K,       KC_M,    RSFT_T(TR_COMM),  RCTL_T(TR_DOT),   KC_SLSH,   KC_ENT ,
+    LSFT_CAPS,  KC_RALT,       KC_LALT,       KC_LGUI,         LOWER,   SPACE_SPC,  SPACE_SPC,  RAISE,   KC_LEFT,          KC_UP,            KC_DOWN,   KC_RGHT
 ),
 
 /* Colemak_tr
@@ -127,10 +127,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_COLEMAKTR] = LAYOUT_plaid_grid(
-    KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,       KC_J,       KC_L,    KC_U,    KC_Y,   TR_SCLN,    KC_BSPC,
-    KC_ESC,  KC_A,    KC_R,    KC_S,    KC_T,    KC_D,       KC_H,       KC_N,    KC_E,    TR_IDOT,    KC_O,    TR_QUOT,
-    KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_K,       KC_M,    TR_COMM, TR_DOT,  TR_SLSH,    KC_ENT ,
-    KC_LCTL, KC_RALT, KC_LALT, KC_LGUI, LOWER,   SPACE_SPC,  SPACE_SPC,  RAISE,   KC_LEFT, KC_UP,   KC_DOWN,    KC_RGHT
+    KC_TAB,    KC_Q,          KC_W,          KC_F,            KC_P,       KC_G,       KC_J,       KC_L,    KC_U,             KC_Y,            TR_SCLN,    KC_BSPC,
+    KC_ESC,    KC_A,          KC_R,          KC_S,            KC_T,       KC_D,       KC_H,       KC_N,    KC_E,             TR_IDOT,         KC_O,       TR_QUOT,
+    KC_LCTL,   LALT_T(TR_Z),  LCTL_T(TR_X),  LSFT_T(TR_C),    KC_V,       KC_B,       KC_K,       KC_M,    RSFT_T(TR_COMM),  RCTL_T(TR_DOT),  TR_SLSH,    KC_ENT ,
+    LSFT_CAPS, KC_RALT,       KC_LALT,       KC_LGUI,         LOWER,      SPACE_SPC,  SPACE_SPC,  RAISE,   KC_LEFT,          KC_UP,           KC_DOWN,    KC_RGHT
 ),
 
 /* Dvorak
@@ -153,45 +153,45 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Lower
  * ,-----------------------------------------------------------------------------------.
- * |   ~  |   !  |   @  |   #  |   $  |   %  |   ^  |   &  |   *  |   (  |   )  | Bksp |
+ * |      |      |      |      |      |      |   (  |   )  |   =  |   &  |   |  |  DEL |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Del  |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |   _  |   +  |   {  |   }  |  |   |
+ * |      |      |      |      |      |      |   {  |   }  |   _  |   $  |   #  |  '   |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |  ~   |  |   | Home | End  |      |
+ * |      |      |      |      |      |      |   [  |  ]   |   <  |   >  |   \  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |             |      | Next | Vol- | Vol+ | Play |
+ * |      |      |      |      |      |    ENTER     |      | Next | Vol- | Vol+ | Play |
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_plaid_grid(
-    TR_TILD, TR_EXLM, TR_AT,   TR_HASH, TR_DLR,  TR_PERC, TR_CIRC, TR_AMPR,    TR_ASTR,    TR_LPRN, TR_RPRN, KC_BSPC,
-    KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   TR_UNDS,    TR_PLUS,    TR_LCBR, TR_RCBR, TR_PIPE,
-    _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  TR_TILD,    TR_PIPE, KC_HOME, KC_END,  _______,
-    _______, _______, _______, _______, _______, _______, _______, _______,    KC_MNXT,    KC_VOLD, KC_VOLU, KC_MPLY
+    _______,  _______,  _______,   _______,   _______,   _______,   TR_LPRN,  TR_RPRN,   TR_EQL,   TR_AMPR,  TR_PIPE,  KC_DEL,
+    _______,  _______,  _______,   _______,   _______,   _______,   TR_LCBR,  TR_RCBR,   TR_UNDS,  TR_DLR,   TR_HASH,  TR_QUOT,
+    _______,  _______,  _______,   _______,   _______,   _______,   TR_LBRC,  TR_RBRC,   TR_LABK,  TR_RABK,  TR_BSLS,  KC_END,
+    _______,  _______,  _______,   _______,   _______,   KC_ENT,    KC_ENT,   _______,   KC_MNXT,  KC_VOLD,  KC_VOLU,  KC_MPLY
 ),
 
 /* Raise
  * ,-----------------------------------------------------------------------------------.
- * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Del  |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |   -  |   =  |   [  |   ]  |  \   |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |ISO # |ISO / |Pg Up |Pg Dn |      |
+ * |      |   /  |   1  |   2  |   3  |   -  |  F1  |  F2  |  F3  |  F4  |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |             |      | Next | Vol- | Vol+ | Play |
+ * |      |  *   |   4  |   5  |   6  |   +  |  F5  |  F6  |  F7  |  F8  |      |      |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |  %   |   7  |   8  |   9  |   0  |  F9  |  F10 |  F11 |  F12 |      |      |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |      |      |      |      |    BSPC     |      | Next | Vol- | Vol+ | Play |
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT_plaid_grid(
-    TR_GRV,  TR_1,    TR_2,    TR_3,    TR_4,    TR_5,    TR_6,    TR_7,    TR_8,    TR_9,    TR_0,    KC_BSPC,
-    KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   TR_MINS, TR_EQL,  TR_LBRC, TR_RBRC, TR_BSLS,
-    _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  TR_SLSH, TR_HASH, KC_PGUP, KC_PGDN, _______,
-    _______, _______, _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY
-),
+    _______,  TR_SLSH,   TR_1,     TR_2,    TR_3,    TR_MINS,     KC_F1,    KC_F2,     KC_F3,     KC_F4,    _______,   _______,
+    _______,  TR_ASTR,   TR_4,     TR_5,    TR_6,    TR_PLUS,     KC_F1,    KC_F2,     KC_F3,     KC_F4,    _______,   _______,
+    _______,  TR_PERC,   TR_7,     TR_8,    TR_9,    TR_0,        KC_F9,    KC_F10,    KC_F11,    KC_F12,   _______,   _______,
+    _______,  _______,   _______,  _______, _______, KC_BSPC,     KC_BSPC,  _______,   KC_MNXT,   KC_VOLD,  KC_VOLU,   KC_MPLY
+), 
 
 /* Space
  * ,-----------------------------------------------------------------------------------.
- * |      |      |      |      |      |   ğ  |       |      |  ü   |  ı   |     |  del |
+ * |      |  !   |  @   |   €  |   £  |   ğ  |       |      |  ü   |  ı   |     |  del |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |   ş  |      |     | LEFT |  UP  |  DWN | RGHT |   ö   |      |
+ * |      |      |      |   ş  |   ₺  |     | LEFT |  UP  |  DWN | RGHT |   ö   |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |   ç  |      |      |      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -199,10 +199,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_SPACE] = LAYOUT_plaid_grid(
-    _______,  _______,   _______,   _______,   TR_GBRV,   _______,   _______,   _______,   TR_UDIA,   TR_I,      TR_COLN,   KC_DEL,
-    _______,  _______,   _______,   TR_SCED,   _______,   _______,   KC_LEFT,   KC_UP,     KC_DOWN,   KC_RGHT,   TR_ODIA,   TR_DQUO,
-    _______,  _______,   _______,   TR_CCED,   _______,   _______,   _______,   _______,   TR_LABK,   TR_RABK,   TR_QUES,   _______,
-    _______,  _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______
+    _______,  TR_EXLM,  TR_AT,     TR_EURO,   TR_PND,    TR_GBRV,   _______,   _______,  TR_UDIA,    _______,   TR_COLN,   KC_DEL,
+    _______,  _______,  _______,   TR_SCED,   TR_LIRA,   _______,   _______,   _______,  S(TR_I),    TR_I,      TR_ODIA,   TR_GRV,
+    _______,  _______,  _______,   TR_CCED,   _______,   _______,   _______,   _______,  TR_CIRC,    TR_TILD,   TR_QUES,   KC_RGHT,
+    _______,  _______,  _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______
 ),  
 
 /* Plover layer (http://opensteno.org)
