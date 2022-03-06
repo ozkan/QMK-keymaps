@@ -25,6 +25,7 @@ enum plaid_layers {
   _LOWER,
   _RAISE,
   _SPACE,
+  _NAVIGATION,
   _PLOVER,
   _ADJUST
 };
@@ -51,6 +52,7 @@ enum plaid_keycodes {
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 #define SPACE MO(_SPACE)
+#define NAV   MO(_NAVIGATION)
 
 // array of keys considered modifiers for led purposes
 const uint16_t modifiers[] = {
@@ -76,6 +78,7 @@ const uint16_t modifiers[] = {
 
 #define SPACE_SPC  LT(SPACE, KC_SPC)
 #define LSFT_CAPS  LSFT_T(KC_CAPS)
+#define NAV_T      LT(NAV, KC_T)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -119,7 +122,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * | Tab  |   Q  |   W  |   F  |   P  |   G  |   J  |   L  |   U  |   Y  |   ;  | Bksp |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Esc  |   A  |   R  |   S  |   T  |   D  |   H  |   N  |   E  |   I  |   O  |  "   |
+ * | Esc  |   A  |   R  |   S  |NAV_T |   D  |   H  |   N  |   E  |   I  |   O  |  "   |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * | Shift|   Z  |   X  |   C  |   V  |   B  |   K  |   M  |   ,  |   .  |   /  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -204,6 +207,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,  _______,  _______,   TR_CCED,   _______,   _______,   _______,   _______,  TR_CIRC,    TR_TILD,   TR_QUES,   KC_RGHT,
     _______,  _______,  _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______
 ),  
+
+
+/* navigation
+ * ,-----------------------------------------------------------------------------------.
+ * |      |      |      |      |      |      | MPRV | PGUP |  UP  |      |      |      |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |      |      |      |      |      | HOME | LEFT | DOWN | RGHT | END  | MPLY |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |      |      |      |      |      | MNXT |PGDOWN|      |VLDOWN| VLUP | MUTE |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |      |      |      |      |             |      |      |      |      |      |
+ * `-----------------------------------------------------------------------------------'
+ */
+[_NAVIGATION] = LAYOUT_plaid_grid(
+    _______,  _______,  _______,   _______,   _______,    _______,   KC_MPRV,  KC_PGUP,   KC_UP,      _______,   _______,   _______,
+    _______,  _______,  _______,   _______,   _______,    _______,   KC_HOME,  KC_LEFT,   KC_DOWN,    KC_RGHT,   KC_END,    KC_MPLY,
+    _______,  _______,  _______,   _______,   _______,    _______,   KC_MNXT,  KC_PGDOWN,  _______,   KC_VOLD,   KC_VOLU,   KC_MUTE,
+    _______,  _______,  _______,   _______,   _______,    _______,   _______,  _______,    _______,   _______,   _______,   _______
+), 
 
 /* Plover layer (http://opensteno.org)
  * ,-----------------------------------------------------------------------------------.
