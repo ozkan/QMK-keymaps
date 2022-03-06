@@ -131,7 +131,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_COLEMAKTR] = LAYOUT_plaid_grid(
     KC_TAB,    KC_Q,          KC_W,          KC_F,            KC_P,       KC_G,       KC_J,       KC_L,    KC_U,             KC_Y,            TR_SCLN,    KC_BSPC,
-    KC_ESC,    KC_A,          KC_R,          KC_S,            KC_T,       KC_D,       KC_H,       KC_N,    KC_E,             TR_IDOT,         KC_O,       TR_DQUO,
+    KC_ESC,    KC_A,          KC_R,          KC_S,            NAV_T,      KC_D,       KC_H,       KC_N,    KC_E,             TR_IDOT,         KC_O,       TR_DQUO,
     KC_LCTL,   LALT_T(TR_Z),  LCTL_T(TR_X),  LSFT_T(TR_C),    KC_V,       KC_B,       KC_K,       KC_M,    RSFT_T(TR_COMM),  RCTL_T(TR_DOT),  TR_SLSH,    KC_ENT ,
     LSFT_CAPS, KC_RALT,       KC_LALT,       KC_LGUI,         LOWER,      SPACE_SPC,  SPACE_SPC,  RAISE,   KC_LEFT,          KC_UP,           KC_DOWN,    KC_RGHT
 ),
