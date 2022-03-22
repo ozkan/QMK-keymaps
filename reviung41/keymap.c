@@ -42,16 +42,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * |----------+------+------+------+------+-------+          +------+------+------+------+------+--------------|
     * |   LCTRL  |  A   |   R  |   S  |ARRW_T|   D   |          |   H  |   N  |   E  |   I  |   O  |  RCTL_DQUO   |
     * |----------+------+------+------+------+-------+          +------+------+------+------+------+--------------|
-    * | LSFT_CAPS|LALT_Z|LCTL_X|LSFT_C|   V  |   B   |          |   K  |   M  |RSFT ,|RCTL .|   /  |   RSFT_ENT   |
+    * | LSFT_CAPS|LALT_Z|LCTL_X|LSFT_C|   V  |   B   |          |   K  |   M  |RSFT ,|RCTL .|ALT / |   RSFT_ENT   |
     * |----------+------+------+------+------+-------+          +------+------+------+------+------+--------------|
     *                             | ALT  | Lower_up |  Space_spc  | Raise_down | WIN  |
     *                                 +-------------/             \--------------+
     */
 
   [_COLEMAK] = LAYOUT_reviung41(
-    KC_TAB,     TR_Q,          TR_W,          TR_F,          TR_P,     TR_G,             TR_J,  TR_L,  TR_U,             TR_Y,            TR_SCLN,  KC_BSPC,
-    KC_LCTRL,   TR_A,          TR_R,          TR_S,          ARROW_T,  TR_D,             TR_H,  TR_N,  TR_E,             TR_IDOT,         TR_O,     RCTL_DQUO,
-    LSFT_CAPS,  LALT_T(TR_Z),  LCTL_T(TR_X),  LSFT_T(TR_C),  TR_V,     TR_B,             TR_K,  TR_M,  RSFT_T(TR_COMM),  RCTL_T(TR_DOT),  TR_SLSH,  RSFT_ENT,
+    KC_TAB,     TR_Q,          TR_W,          TR_F,          TR_P,     TR_G,             TR_J,  TR_L,  TR_U,             TR_Y,            TR_SCLN,          KC_BSPC,
+    KC_LCTRL,   TR_A,          TR_R,          TR_S,          ARROW_T,  TR_D,             TR_H,  TR_N,  TR_E,             TR_IDOT,         TR_O,             RCTL_DQUO,
+    LSFT_CAPS,  LALT_T(TR_Z),  LCTL_T(TR_X),  LSFT_T(TR_C),  TR_V,     TR_B,             TR_K,  TR_M,  RSFT_T(TR_COMM),  RCTL_T(TR_DOT),  LALT_T(TR_SLSH),  RSFT_ENT,
                                                      KC_LALT,   LOWER_UP,     SPACE_SPC,   RAISE_DOWN,    KC_RGUI
   ),
 
@@ -118,9 +118,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  
    /* SPACE
     * ,-------------------------------------------------- -+         +------------------------------------------.
-    * |   ESC  |   !    |   @   |    ₺    |   €   |   Ğ    |         |      |      |   Ü  |      |  :   |  DEL  |
+    * |   ESC  |        |       |    ₺    |   €   |   Ğ    |         |      |      |   Ü  |      |  :   |  DEL  |
     * |--------+--------+-------+---------+-------+--------+         +------+------+------+------+------+-------|
-    * |        |        |       |    Ş    |       |   £    |         |      |      | S(ı) |   I  |  Ö   |  `    |
+    * |        |    !   |   @   |    Ş    |       |   £    |         |      |      | S(ı) |   I  |  Ö   |  `    |
     * |--------+--------+-------+---------+-------+--------+         +------+------+------+------+------+-------|
     * |        |        |       |    Ç    |       |        |         |      |      |   ^  |   ~  |   ?  |  RGHT |
     * |--------+--------+-------+---------+-------+--------+         +------+------+------+------+------+-------|
@@ -130,8 +130,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
   [_SPACE] = LAYOUT_reviung41(
-    KC_ESC,  TR_EXLM,  TR_AT,     TR_LIRA,  TR_EURO,  TR_GBRV,               _______,  _______,  TR_UDIA,   _______,  TR_COLN,  KC_DEL,
-    _______,  _______,  _______,  TR_SCED,  _______,  TR_PND,                _______,  _______,  S(TR_I),  TR_I,      TR_ODIA,  TR_GRV,
+    KC_ESC,   _______,  _______,  TR_LIRA,  TR_EURO,  TR_GBRV,               _______,  _______,  TR_UDIA,   _______,  TR_COLN,  KC_DEL,
+    _______,  TR_EXLM,  TR_AT,    TR_SCED,  _______,  TR_PND,                _______,  _______,  S(TR_I),  TR_I,      TR_ODIA,  TR_GRV,
     _______,  _______,  _______,  TR_CCED,  _______,  _______,               _______,  _______,  TR_CIRC,  TR_TILD,   TR_QUES,  KC_RGHT,
                                              _______,   _______,  _______,  _______,  _______
   ),

@@ -1,26 +1,9 @@
-/* Copyright 2019 Takuya Urakawa (dm9records.com)
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 #include QMK_KEYBOARD_H
 #include "keymap_turkish_q.h"
 
 enum plaid_layers {
   _QWERTY,
   _COLEMAK,
-  _COLEMAKTR,
   _DVORAK,
   _LOWER,
   _RAISE,
@@ -33,7 +16,6 @@ enum plaid_layers {
 enum plaid_keycodes {
   QWERTY = SAFE_RANGE,
   COLEMAK,
-  COLEMAKTR, 
   DVORAK,
   PLOVER,
   EXT_PLV,
@@ -82,6 +64,26 @@ const uint16_t modifiers[] = {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
+
+
+/* Colemak
+ * ,-----------------------------------------------------------------------------------.
+ * | Tab  |   Q  |   W  |   F  |   P  |   G  |   J  |   L  |   U  |   Y  |   ;  | Bksp |
+ * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * | Esc  |   A  |   R  |   S  |NAV_T |   D  |   H  |   N  |   E  |   I  |   O  |  "   |
+ * |------+------+------+------+------+------|------+------+------+------+------+------|
+ * | Shift|LALT Z|LCTL X|LSFT C|   V  |   B  |   K  |   M  |RSFT ,|RCFT .|LALT /|Enter |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * | Ctrl | RAlt | Alt  | GUI  |Lower |    Space    |Raise | Left |  Up  | Down |Right |
+ * `-----------------------------------------------------------------------------------'
+ */
+[_COLEMAK] = LAYOUT_plaid_grid(
+    KC_TAB,    KC_Q,          KC_W,          KC_F,            KC_P,       KC_G,       KC_J,       KC_L,    KC_U,             KC_Y,            TR_SCLN,    KC_BSPC,
+    KC_ESC,    KC_A,          KC_R,          KC_S,            NAV_T,      KC_D,       KC_H,       KC_N,    KC_E,             TR_IDOT,         KC_O,       TR_DQUO,
+    KC_LCTL,   LALT_T(TR_Z),  LCTL_T(TR_X),  LSFT_T(TR_C),    KC_V,       KC_B,       KC_K,       KC_M,    RSFT_T(TR_COMM),  RCTL_T(TR_DOT),  LALT_T(TR_SLSH),    KC_ENT ,
+    LSFT_CAPS, KC_RALT,       KC_LALT,       KC_LGUI,         LOWER,      SPACE_SPC,  SPACE_SPC,  RAISE,   KC_LEFT,          KC_UP,           KC_DOWN,    KC_RGHT
+),
+
 /* Qwerty
  * ,-----------------------------------------------------------------------------------.
  * | Tab  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Bksp |
@@ -98,42 +100,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ESC,      KC_A,    KC_S,    KC_D,    KC_F,    KC_G,       KC_H,       KC_J,    KC_K,    KC_L,    TR_SCLN, TR_QUOT,
     KC_LCTL,     KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,       KC_M,    TR_COMM, TR_DOT,  TR_SLSH, KC_ENT ,
     LSFT_CAPS,   KC_RALT, KC_LALT, KC_LGUI, LOWER,   SPACE_SPC,  SPACE_SPC,  RAISE,   KC_LEFT, KC_UP,   KC_DOWN,   KC_RGHT
-),
-
-/* Colemak
- * ,-----------------------------------------------------------------------------------.
- * | Tab  |   Q  |   W  |   F  |   P  |   G  |   J  |   L  |   U  |   Y  |   ;  | Bksp |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Esc  |   A  |   R  |   S  |   T  |   D  |   H  |   N  |   E  |   I  |   O  |  "   |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
- * | Shift|   Z  |   X  |   C  |   V  |   B  |   K  |   M  |   ,  |   .  |   /  |Enter |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrl | RAlt | Alt  | GUI  |Lower |    Space    |Raise | Left |  Up  | Down |Right |
- * `-----------------------------------------------------------------------------------'
- */
-[_COLEMAK] = LAYOUT_plaid_grid(
-    KC_TAB,     KC_Q,          KC_W,          KC_F,            KC_P,    KC_G,       KC_J,       KC_L,    KC_U,             KC_Y,             KC_SCLN,   KC_BSPC,
-    KC_ESC,     KC_A,          KC_R,          KC_S,            KC_T,    KC_D,       KC_H,       KC_N,    KC_E,             KC_I,             KC_O,      KC_QUOT,
-    KC_LCTL,    LALT_T(TR_Z),  LCTL_T(TR_X),  LSFT_T(TR_C),    KC_V,    KC_B,       KC_K,       KC_M,    RSFT_T(TR_COMM),  RCTL_T(TR_DOT),   KC_SLSH,   KC_ENT ,
-    LSFT_CAPS,  KC_RALT,       KC_LALT,       KC_LGUI,         LOWER,   SPACE_SPC,  SPACE_SPC,  RAISE,   KC_LEFT,          KC_UP,            KC_DOWN,   KC_RGHT
-),
-
-/* Colemak_tr
- * ,-----------------------------------------------------------------------------------.
- * | Tab  |   Q  |   W  |   F  |   P  |   G  |   J  |   L  |   U  |   Y  |   ;  | Bksp |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Esc  |   A  |   R  |   S  |NAV_T |   D  |   H  |   N  |   E  |   I  |   O  |  "   |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
- * | Shift|   Z  |   X  |   C  |   V  |   B  |   K  |   M  |   ,  |   .  |   /  |Enter |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrl | RAlt | Alt  | GUI  |Lower |    Space    |Raise | Left |  Up  | Down |Right |
- * `-----------------------------------------------------------------------------------'
- */
-[_COLEMAKTR] = LAYOUT_plaid_grid(
-    KC_TAB,    KC_Q,          KC_W,          KC_F,            KC_P,       KC_G,       KC_J,       KC_L,    KC_U,             KC_Y,            TR_SCLN,    KC_BSPC,
-    KC_ESC,    KC_A,          KC_R,          KC_S,            NAV_T,      KC_D,       KC_H,       KC_N,    KC_E,             TR_IDOT,         KC_O,       TR_DQUO,
-    KC_LCTL,   LALT_T(TR_Z),  LCTL_T(TR_X),  LSFT_T(TR_C),    KC_V,       KC_B,       KC_K,       KC_M,    RSFT_T(TR_COMM),  RCTL_T(TR_DOT),  TR_SLSH,    KC_ENT ,
-    LSFT_CAPS, KC_RALT,       KC_LALT,       KC_LGUI,         LOWER,      SPACE_SPC,  SPACE_SPC,  RAISE,   KC_LEFT,          KC_UP,           KC_DOWN,    KC_RGHT
 ),
 
 /* Dvorak
@@ -192,9 +158,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Space
  * ,-----------------------------------------------------------------------------------.
- * |      |  !   |  @   |   €  |   £  |   ğ  |       |      |  ü   |  ı   |     |  del |
+ * |      |      |      |   €  |   £  |   ğ  |       |      |  ü   |  ı   |     |  del |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |   ş  |   ₺  |     | LEFT |  UP  |  DWN | RGHT |   ö   |      |
+ * |      |  !   |  @   |   ş  |   ₺  |     | LEFT |  UP  |  DWN | RGHT |   ö   |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |   ç  |      |      |      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -202,8 +168,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_SPACE] = LAYOUT_plaid_grid(
-    _______,  TR_EXLM,  TR_AT,     TR_EURO,   TR_PND,    TR_GBRV,   _______,   _______,  TR_UDIA,    _______,   TR_COLN,   KC_DEL,
-    _______,  _______,  _______,   TR_SCED,   TR_LIRA,   _______,   _______,   _______,  S(TR_I),    TR_I,      TR_ODIA,   TR_GRV,
+    _______,  _______,  _______,   TR_EURO,   TR_PND,    TR_GBRV,   _______,   _______,  TR_UDIA,    _______,   TR_COLN,   KC_DEL,
+    _______,  TR_EXLM,  TR_AT,     TR_SCED,   TR_LIRA,   _______,   _______,   _______,  S(TR_I),    TR_I,      TR_ODIA,   TR_GRV,
     _______,  _______,  _______,   TR_CCED,   _______,   _______,   _______,   _______,  TR_CIRC,    TR_TILD,   TR_QUES,   KC_RGHT,
     _______,  _______,  _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______
 ),  
@@ -250,7 +216,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * |Reset |      |      |      |      |      |      |      |      |      |      |  Del |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |      |      |Aud on|Audoff|AGnorm|AGswap|Qwerty|Colemk|Dvorak|Plover|      |
+ * |      |      |      |Aud on|Audoff|AGnorm|AGswap|      |Plover|Dvorak|Qwerty|Colemk|
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      |Voice-|Voice+|Mus on|Musoff|MIDIon|MIDIof|      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -258,10 +224,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_ADJUST] = LAYOUT_plaid_grid(
-    RESET,LED_1, LED_2, LED_3, LED_4, LED_5,LED_6, LED_7, LED_8, LED_9, LED_0,KC_DEL ,
-    _______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  COLEMAK, DVORAK,  PLOVER,  COLEMAKTR,
+    RESET,   LED_1,   LED_2,   LED_3,   LED_4,   LED_5,   LED_6,   LED_7,    LED_8,  LED_9,   LED_0,   KC_DEL ,
+    _______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, _______,  PLOVER, DVORAK,  QWERTY,  COLEMAK,
     _______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  TERM_ON, TERM_OFF, _______, _______, _______,
-    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+    _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______, _______
 )
 
 
@@ -376,12 +342,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case COLEMAK:
       if (record->event.pressed) {
         set_single_persistent_default_layer(_COLEMAK);
-      }
-      return false;
-      break;
-    case COLEMAKTR:
-      if (record->event.pressed) {
-        set_single_persistent_default_layer(_COLEMAKTR);
       }
       return false;
       break;
