@@ -14,8 +14,8 @@ enum plaid_layers {
 };
 
 enum plaid_keycodes {
-  QWERTY = SAFE_RANGE,
-  COLEMAK,
+  COLEMAK = SAFE_RANGE,
+  QWERTY,
   DVORAK,
   PLOVER,
   EXT_PLV,
