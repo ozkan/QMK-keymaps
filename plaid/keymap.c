@@ -9,7 +9,6 @@ enum plaid_layers {
   _RAISE,
   _SPACE,
   _NAVIGATION,
-  _PLOVER,
   _ADJUST
 };
 
@@ -17,7 +16,6 @@ enum plaid_keycodes {
   COLEMAK = SAFE_RANGE,
   QWERTY,
   DVORAK,
-  PLOVER,
   EXT_PLV,
   LED_1,
   LED_2,
@@ -63,8 +61,6 @@ const uint16_t modifiers[] = {
 #define NAV_T      LT(NAV, KC_T)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-
-
 
 /* Colemak
  * ,-----------------------------------------------------------------------------------.
@@ -158,20 +154,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Space
  * ,-----------------------------------------------------------------------------------.
- * |  ESC |      |      |   €  |   £  |   ğ  |       |      |  ü   |  ı   |     |  DEL |
+ * |  ESC |      |      |   €  |   £  |   ğ  |      |      |  ü   |      |  :   |  DEL |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |  !   |  @   |   ş  |   ₺  |     | LEFT |  UP  |  DWN | RGHT |   ö   |      |
+ * |      |  !   |  @   |   ş  |   ₺  |      |      |      |   I  |   ı  |  ö   |  `   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |   ç  |      |      |      |      |      |      |      |      |
+ * |      |      |      |LSFT ç|      |      |      |      |  ^   |   ~  |  ?   |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |             |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_SPACE] = LAYOUT_plaid_grid(
-    KC_ESC,   _______,  _______,   TR_EURO,   TR_PND,    TR_GBRV,   _______,   _______,  TR_UDIA,    _______,   TR_COLN,   KC_DEL,
-    _______,  TR_EXLM,  TR_AT,     TR_SCED,   TR_LIRA,   _______,   _______,   _______,  S(TR_I),    TR_I,      TR_ODIA,   TR_GRV,
-    _______,  _______,  _______,   TR_CCED,   _______,   _______,   _______,   _______,  TR_CIRC,    TR_TILD,   TR_QUES,   KC_RGHT,
-    _______,  _______,  _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______
+    KC_ESC,   _______,  _______,   TR_EURO,           TR_PND,    TR_GBRV,   _______,   _______,  TR_UDIA,    _______,   TR_COLN,   KC_DEL,
+    _______,  TR_EXLM,  TR_AT,     TR_SCED,           TR_LIRA,   _______,   _______,   _______,  S(TR_I),    TR_I,      TR_ODIA,   TR_GRV,
+    _______,  _______,  _______,   LSFT_T(TR_CCED),   _______,   _______,   _______,   _______,  TR_CIRC,    TR_TILD,   TR_QUES,   KC_RGHT,
+    _______,  _______,  _______,   _______,           _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______
 ),  
 
 
@@ -193,30 +189,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,  _______,  _______,   _______,   _______,    _______,   _______,  _______,    _______,   _______,   _______,   _______
 ), 
 
-/* Plover layer (http://opensteno.org)
- * ,-----------------------------------------------------------------------------------.
- * |   #  |   #  |   #  |   #  |   #  |   #  |   #  |   #  |   #  |   #  |   #  |   #  |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |   S  |   T  |   P  |   H  |   *  |   *  |   F  |   P  |   L  |   T  |   D  |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |   S  |   K  |   W  |   R  |   *  |   *  |   R  |   B  |   G  |   S  |   Z  |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Exit |      |      |   A  |   O  |             |   E  |   U  |      |      |      |
- * `-----------------------------------------------------------------------------------'
- */
-
-[_PLOVER] = LAYOUT_plaid_grid(
-    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1   ,
-    XXXXXXX, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC,
-    XXXXXXX, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-    EXT_PLV, XXXXXXX, XXXXXXX, KC_C,    KC_V,    XXXXXXX, XXXXXXX, KC_N,    KC_M,    XXXXXXX, XXXXXXX, XXXXXXX
-),
 
 /* Adjust (Lower + Raise)
  * ,-----------------------------------------------------------------------------------.
  * |Reset |LED_1 |LED_2 |LED_3 |LED_4 |LED_5 |LED_6 |LED_7 |LED_8 |LED_9 |LED_0 |  Del |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |      |Mu mod|Aud on|Audoff|AGnorm|AGswap|      |Plover|Dvorak|Qwerty|Colemk|
+ * |      |      |Mu mod|Aud on|Audoff|AGnorm|AGswap|      |      |Dvorak|Qwerty|Colemk|
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      |Voice-|Voice+|Mus on|Musoff|MIDIon|MIDIof|TermOn|Te.Off|      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -224,10 +202,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_ADJUST] = LAYOUT_plaid_grid(
-    RESET,   LED_1,   LED_2,   LED_3,   LED_4,   LED_5,   LED_6,   LED_7,    LED_8,  LED_9,   LED_0,   KC_DEL ,
-    _______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, _______,  PLOVER, DVORAK,  QWERTY,  COLEMAK,
-    _______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  TERM_ON, TERM_OFF, _______, _______, _______,
-    _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______, _______
+    RESET,   LED_1,   LED_2,   LED_3,   LED_4,   LED_5,   LED_6,   LED_7,    LED_8,   LED_9,   LED_0,   KC_DEL ,
+    _______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, _______,  _______, DVORAK,  QWERTY,  COLEMAK,
+    _______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  TERM_ON,  TERM_OFF, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______
 )
 
 
@@ -348,27 +326,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case DVORAK:
       if (record->event.pressed) {
         set_single_persistent_default_layer(_DVORAK);
-      }
-      return false;
-      break;
-    case PLOVER:
-      if (record->event.pressed) {
-        layer_off(_RAISE);
-        layer_off(_LOWER);
-        layer_off(_ADJUST);
-        layer_on(_PLOVER);
-        if (!eeconfig_is_enabled()) {
-            eeconfig_init();
-        }
-        keymap_config.raw = eeconfig_read_keymap();
-        keymap_config.nkro = 1;
-        eeconfig_update_keymap(keymap_config.raw);
-      }
-      return false;
-      break;
-    case EXT_PLV:
-      if (record->event.pressed) {
-        layer_off(_PLOVER);
       }
       return false;
       break;
