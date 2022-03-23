@@ -207,8 +207,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  TERM_ON,  TERM_OFF, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______,   _______, _______, _______, _______
 )
-
-
 };
 
 //Setup config struct for LED
