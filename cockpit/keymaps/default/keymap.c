@@ -8,6 +8,7 @@
 
 enum cockpit_layer {
     _COLEMAK,
+    _COLEMAKDH,
     _QWERTY,
     _LOWER,
     _RAISE,
@@ -19,6 +20,7 @@ enum cockpit_layer {
 
 enum cockpit_keycodes {
   COLEMAK = SAFE_RANGE,
+  COLEMAKDH,
   QWERTY
 };
 
@@ -64,6 +66,34 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,     TR_Q,          TR_W,          TR_F,          TR_P,     TR_G,             TR_J,  TR_L,  TR_U,             TR_Y,            TR_SCLN,   KC_BSPC,
     KC_LCTRL,   TR_A,          TR_R,          TR_S,          ARROW_T,  TR_D,             TR_H,  TR_N,  TR_E,             TR_IDOT,         TR_O,      TR_QUOT,
     LSFT_CAPS,  LALT_T(TR_Z),  LCTL_T(TR_X),  LSFT_T(TR_C),  TR_V,     TR_B,             TR_K,  TR_M,  RSFT_T(TR_COMM),  RCTL_T(TR_DOT),  TR_SLSH,   RSFT_ENT,
+                                                                          KC_MPLY,   KC_MUTE,
+                                         KC_LALT,   LOWER,    FNL_ENT,                           FNR_SPC,   RAISE,   KC_RGUI,    
+                                                                                 KC_UP,
+                                                                    KC_LEFT,    KC_DOWN,  KC_RGHT
+
+  ),
+
+// COLEMAK DH
+// ╭──────┬──────┬──────┬──────┬──────┬──────╮                   ╭──────┬──────┬──────┬──────┬──────┬──────╮
+// │  TAB │  Q   │  W   │  F   │  P   │  B   │                   │  J   │  L   │  U   │  Y   │   ;  │ BSPC │
+// ├──────┼──────┼──────┼──────┼──────┼──────┤                   ├──────┼──────┼──────┼──────┼──────┼──────┤
+// │ CTRL │  A   │  R   │  S   │NAV T │  G   │                   │  M   │  N   │  E   │  I   │  O   │   '  │
+// ├──────┼──────┼──────┼──────┼──────┼──────┤                   ├──────┼──────┼──────┼──────┼──────┼──────┤
+// │SFT_CL│ALT Z │CTL X │SFT C │  D   │  V   │                   │  K   │  H   │SFT , │CTL . │ALT / │ ENT  │
+// ╰──────┴──────┴──────┴──────┴──────┴──────┼─────────┬─────────┼──────┴──────┴──────┴──────┴──────┴──────╯
+//                                           │   MPLY  │  MUTE   │
+//                     ╭──────┬──────┬───────┼─────────┴─────────┼──────┬──────┬──────╮
+//                     │  ALT │LOWER │  FNL  │                   │ FNR  │RAISE │  WIN │
+//                     ╰──────┴──────┴───────┴─────┬──────┬──────┴──────┴──────┴──────╯
+//                                                 │  UP  │
+//                                          ╭──────┼──────┼──────╮
+//                                          │ LEFT │ DOWN │ RIGHT│
+//                                          ╰──────┴──────┴──────╯
+
+  [_COLEMAKDH] = LAYOUT_cockpit(
+    KC_TAB,     TR_Q,          TR_W,          TR_F,          TR_P,     TR_B,             TR_J,  TR_L,  TR_U,             TR_Y,            TR_SCLN,   KC_BSPC,
+    KC_LCTRL,   TR_A,          TR_R,          TR_S,          ARROW_T,  TR_G,             TR_M,  TR_N,  TR_E,             TR_IDOT,         TR_O,      TR_QUOT,
+    LSFT_CAPS,  LALT_T(TR_Z),  LCTL_T(TR_X),  LSFT_T(TR_C),  TR_B,     TR_V,             TR_K,  TR_H,  RSFT_T(TR_COMM),  RCTL_T(TR_DOT),  TR_SLSH,   RSFT_ENT,
                                                                           KC_MPLY,   KC_MUTE,
                                          KC_LALT,   LOWER,    FNL_ENT,                           FNR_SPC,   RAISE,   KC_RGUI,    
                                                                                  KC_UP,
@@ -237,7 +267,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // ADJUST
 // ╭──────┬──────┬──────┬──────┬──────┬──────╮                   ╭──────┬──────┬──────┬──────┬──────┬──────╮
-// │      │      │      │      │      │      │                   │      │      │      │      │ QWERY│COLEMK│
+// │      │      │      │      │      │      │                   │      │      │      │QWERTY│ C.HD │COLEMK│
 // ├──────┼──────┼──────┼──────┼──────┼──────┤                   ├──────┼──────┼──────┼──────┼──────┼──────┤
 // │      │      │      │      │      │      │                   │      │      │      │      │      │      │
 // ├──────┼──────┼──────┼──────┼──────┼──────┤                   ├──────┼──────┼──────┼──────┼──────┼──────┤
@@ -254,9 +284,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
   [_ADJUST] = LAYOUT_cockpit(
-    XXXXXXX,   XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,                 XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  QWERTY,   COLEMAK,
-    XXXXXXX,   XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX,   XXXXXXX,                 XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-    XXXXXXX,   XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,            RESET,    XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+    XXXXXXX,   XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,                 XXXXXXX,  XXXXXXX,  XXXXXXX,  QWERTY,   COLEMAKDH,   COLEMAK,
+    XXXXXXX,   XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,                 XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,     XXXXXXX,
+    XXXXXXX,   XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,                 RESET,    XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,     XXXXXXX,
                                                                KC_MPLY,   KC_MUTE,
                               KC_LALT,   LOWER,    FNL_ENT,                           FNR_SPC,   RAISE,   KC_RGUI,    
                                                                       KC_UP,
