@@ -304,18 +304,41 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     } else if (index == 1) { /* Second encoder: Left encoder */
         if (IS_LAYER_ON(_LOWER)) { 
               if (clockwise) {
-                  tap_code(KC_VOLU);
+                  tap_code(KC_BRIU);
               } else {
-                  tap_code(KC_VOLD);
+                  tap_code(KC_BRID);
               }
         } else {
               if (clockwise) {
-                  tap_code(KC_BRID);
+                  tap_code(KC_PGUP);
               } else {
-                  tap_code(KC_BRIU);
+                  tap_code(KC_PGDN);
               }
         }
     }
     return false;
 }
 
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    case COLEMAK:
+      if (record->event.pressed) {
+        set_single_persistent_default_layer(_COLEMAK);
+      }
+      return false;
+      break;
+    case COLEMAKDH:
+      if (record->event.pressed) {
+        set_single_persistent_default_layer(_COLEMAKDH);
+      }
+      return false;
+      break;
+    case QWERTY:
+      if (record->event.pressed) {
+        set_single_persistent_default_layer(_QWERTY);
+      }
+      return false;
+      break;
+  }
+  return true;
+}
