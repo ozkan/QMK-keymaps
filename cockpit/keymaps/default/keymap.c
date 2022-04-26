@@ -5,7 +5,6 @@
 #include QMK_KEYBOARD_H
 #include "keymap_turkish_q.h"
 
-
 enum cockpit_layer {
     _COLEMAK,
     _COLEMAKDH,
@@ -24,7 +23,6 @@ enum cockpit_keycodes {
   QWERTY
 };
 
-
 #define LOWER  MO(_LOWER)
 #define RAISE  MO(_RAISE)
 #define FNL    MO(_FNL)
@@ -35,13 +33,9 @@ enum cockpit_keycodes {
 #define LSFT_CAPS  LSFT_T(KC_CAPS)
 #define RSFT_ENT   RSFT_T(KC_ENT)
 
-
 #define FNR_SPC     LT(FNR, KC_SPC)
 #define FNL_ENT     LT(FNL, KC_ENT)
 #define ARROW_T LT(ARROW, KC_T)
-
-
-
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -51,7 +45,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // ├──────┼──────┼──────┼──────┼──────┼──────┤                   ├──────┼──────┼──────┼──────┼──────┼──────┤
 // │ CTRL │  A   │  R   │  S   │NAV T │  D   │                   │  H   │  N   │  E   │  I   │  O   │   '  │
 // ├──────┼──────┼──────┼──────┼──────┼──────┤                   ├──────┼──────┼──────┼──────┼──────┼──────┤
-// │SFT_CL│ALT Z │CTL X │SFT C │  V   │  B   │                   │  K   │  M   │SFT , │CTL . │ALT / │ ENT  │
+// │SFT_CL│ALT Z │CTL X │SFT C │  V   │  B   │                   │  K   │  M   │SFT , │CTL . │  /   │ ENT  │
 // ╰──────┴──────┴──────┴──────┴──────┴──────┼─────────┬─────────┼──────┴──────┴──────┴──────┴──────┴──────╯
 //                                           │   MPLY  │  MUTE   │
 //                     ╭──────┬──────┬───────┼─────────┴─────────┼──────┬──────┬──────╮
@@ -79,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // ├──────┼──────┼──────┼──────┼──────┼──────┤                   ├──────┼──────┼──────┼──────┼──────┼──────┤
 // │ CTRL │  A   │  R   │  S   │NAV T │  G   │                   │  M   │  N   │  E   │  I   │  O   │   '  │
 // ├──────┼──────┼──────┼──────┼──────┼──────┤                   ├──────┼──────┼──────┼──────┼──────┼──────┤
-// │SFT_CL│ALT Z │CTL X │SFT C │  D   │  V   │                   │  K   │  H   │SFT , │CTL . │ALT / │ ENT  │
+// │SFT_CL│ALT Z │CTL X │SFT C │  D   │  V   │                   │  K   │  H   │SFT , │CTL . │  /   │ ENT  │
 // ╰──────┴──────┴──────┴──────┴──────┴──────┼─────────┬─────────┼──────┴──────┴──────┴──────┴──────┴──────╯
 //                                           │   MPLY  │  MUTE   │
 //                     ╭──────┬──────┬───────┼─────────┴─────────┼──────┬──────┬──────╮
@@ -263,8 +257,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
 
-
-
 // ADJUST
 // ╭──────┬──────┬──────┬──────┬──────┬──────╮                   ╭──────┬──────┬──────┬──────┬──────┬──────╮
 // │      │      │      │      │      │      │                   │      │      │      │QWERTY│ C.HD │COLEMK│
@@ -297,23 +289,33 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 
+
 layer_state_t layer_state_set_user(layer_state_t state) {
   return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
 }
 
 bool encoder_update_user(uint8_t index, bool clockwise) {
-    if (index == 0) { /* First encoder */
+    if (index == 0) { /* First encoder: Right encoder */
         if (clockwise) {
             tap_code_delay(KC_VOLU, 10);
         } else {
             tap_code_delay(KC_VOLD, 10);
         }
-    } else if (index == 1) { /* Second encoder */
-        if (clockwise) {
-            tap_code(KC_PGDN);
+    } else if (index == 1) { /* Second encoder: Left encoder */
+        if (IS_LAYER_ON(_LOWER)) { 
+              if (clockwise) {
+                  tap_code(KC_VOLU);
+              } else {
+                  tap_code(KC_VOLD);
+              }
         } else {
-            tap_code(KC_PGUP);
+              if (clockwise) {
+                  tap_code(KC_BRID);
+              } else {
+                  tap_code(KC_BRIU);
+              }
         }
     }
     return false;
 }
+
