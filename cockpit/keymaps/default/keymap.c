@@ -44,10 +44,10 @@ enum cockpit_keycodes {
 #define ADJUST MO(_ADJUST)
 
 #define LSFT_CAPS  LSFT_T(KC_CAPS)
-#define RSFT_ENT   RSFT_T(KC_TAB)
+#define RSFT_ENT   RSFT_T(KC_ENT)
 
 #define FNR_SPC     LT(FNR, KC_SPC)
-#define FNL_ENT     LT(FNL, KC_SPC)
+#define FNL_ENT     LT(FNL, KC_TAB)
 #define ARROW_T LT(ARROW, KC_T)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
