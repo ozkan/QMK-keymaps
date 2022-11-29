@@ -322,10 +322,15 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                   tap_code(KC_BRID);
               }
         } 
+        app_switcher_timer = timer_read();
+        if (!app_switcher_active) {
+          app_switcher_active = true;
+          register_code(KC_LALT);
+        }
         if (clockwise) {
-            tap_code16(A(KC_TAB));
+            tap_code16(KC_TAB);
         } else {
-            tap_code16(A(S(KC_TAB)));
+            tap_code16(S(KC_TAB));
         }
         
     }
@@ -354,4 +359,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
   }
   return true;
+}
+
+void matrix_scan_user(void) {
+  if (app_switcher_active && timer_elapsed(app_switcher_timer) > 500) {
+    unregister_code(KC_LGUI);
+    app_switcher_active = false;
+  }
 }
