@@ -321,13 +321,13 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
               } else {
                   tap_code(KC_BRID);
               }
+        } 
+        if (clockwise) {
+            tap_code16(A(KC_TAB));
         } else {
-              if (clockwise) {
-                  tap_code(KC_PGUP);
-              } else {
-                  tap_code(KC_PGDN);
-              }
+            tap_code16(A(S(KC_TAB)));
         }
+        
     }
     return false;
 }
