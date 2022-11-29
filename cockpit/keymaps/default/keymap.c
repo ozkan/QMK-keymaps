@@ -307,6 +307,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
 }
 
+static uint16_t app_switcher_timer = 0;
+static bool app_switcher_active = false;
+
 bool encoder_update_user(uint8_t index, bool clockwise) {
     if (index == 0) { /* First encoder: Right encoder */
         if (clockwise) {
