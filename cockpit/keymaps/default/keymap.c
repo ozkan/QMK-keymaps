@@ -366,7 +366,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 void matrix_scan_user(void) {
   if (app_switcher_active && timer_elapsed(app_switcher_timer) > 500) {
-    unregister_code(KC_LGUI);
+    unregister_code(KC_LALT);
     app_switcher_active = false;
   }
 }
